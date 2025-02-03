@@ -2,13 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Test_Page</title>
     <link rel="stylesheet" href="/src/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mitr:wght@200;300;400;500;600;700&family=Montserrat:wght@100..900&display=swap');
+      
+      *{
+        font-family: "kanit", serif;
+      }
+
+    </style>
   </head>
 
-  <body>
+  <body class="p-6 bg-gray-100">
+    <div class="max-w-2xl p-6 mx-auto bg-white rounded-lg shadow-md">
+      <!-- ส่วนหัวเรื่อง -->
+      <h2 class="flex items-center justify-center mt-5 text-xl font-semibold sm:text-2xl md:text-4xl md:mt-8">ระบบบันทึกค่าใช้จ่าย</h2>
+      <!-- Form -->
+      <form id="expense-form" class="mt-5 space-y-4">
+        <div>
+          <label class="block text-gray-700">รายการ: </label>
+          <input type="text" id="title" required class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+        </div>
+        <div>
+          <label class="block text-gray-700">จำนวนเงิน: </label>
+          <input type="text" id="title" required class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+        </div>
+        <div class="flex gap-3">
+          <div class="flex-1">
+            <label class="block text-gray-700">ประเภท: </label>
+            <select id="select-category" class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+              <option value="Food">ค่าอาหาร 🍲</option>
+              <option value="Transport">ค่าเดินทาง ✈️</option>
+              <option value="Entertainment">ความบันเทิง 😜</option>
+              <option value="other">อื่นๆ</option>
+            </select>
+          </div>
+
+          <div class="flex-1">
+            <label class="block text-gray-700">วันที่: </label>
+            <input type="date" id="date" class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+          </div>
+        </div>
+        <button class="w-full p-2 text-white bg-green-500 rounded hover:bg-green-600">บันทึก</button>
+      </form>
+    </div>
+
+    <!-- ตารางแสดงค่าใช้จ่าย -->
+    <div class="p-6 mx-auto mt-6 bg-white rounded-lg shadow-md max-w-7xl">
+      <h3 class="mb-4 text-xl font-bold">รายการค่าใช้จ่าย</h3>
+      <table class="w-full border border-collapse border-gray-300">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 border border-gray-300">รายการ</th>
+            <th class="p-2 border border-gray-300">จำนวน</th>
+            <th class="p-2 border border-gray-300">ประเภท</th>
+            <th class="p-2 border border-gray-300">วันที่</th>
+          </tr>
+        </thead>
+        <tbody id="expense-list"></tbody>
+      </table>
+    </div>
+
     
   </body>
-
 </html>
