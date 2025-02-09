@@ -29,16 +29,16 @@
         </div>
         <div>
           <label class="block text-gray-700">จำนวนเงิน: </label>
-          <input type="text" id="title" required class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+          <input type="text" id="amount" required class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
         </div>
         <div class="flex gap-3">
           <div class="flex-1">
             <label class="block text-gray-700">ประเภท: </label>
             <select id="select-category" class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
-              <option value="Food">ค่าอาหาร 🍲</option>
-              <option value="Transport">ค่าเดินทาง ✈️</option>
-              <option value="Entertainment">ความบันเทิง 😜</option>
-              <option value="other">อื่นๆ</option>
+              <option value="ค่าอาหาร 🍲">ค่าอาหาร 🍲</option>
+              <option value="ค่าเดินทาง ✈️">ค่าเดินทาง ✈️</option>
+              <option value="ความบันเทิง 😜">ความบันเทิง 😜</option>
+              <option value="อื่นๆ">อื่นๆ</option>
             </select>
           </div>
 
@@ -47,26 +47,61 @@
             <input type="date" id="date" class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
           </div>
         </div>
-        <button class="w-full p-2 text-white bg-green-500 rounded hover:bg-green-600">บันทึก</button>
+        <button type="submit" class="w-full p-2 text-white bg-green-500 rounded hover:bg-green-600">บันทึก</button>
       </form>
-    </div>
 
-    <!-- ตารางแสดงค่าใช้จ่าย -->
-    <div class="p-6 mx-auto mt-6 bg-white rounded-lg shadow-md max-w-7xl">
-      <h3 class="mb-4 text-xl font-bold">รายการค่าใช้จ่าย</h3>
-      <table class="w-full border border-collapse border-gray-300">
-        <thead>
-          <tr class="bg-gray-200">
-            <th class="p-2 border border-gray-300">รายการ</th>
-            <th class="p-2 border border-gray-300">จำนวน</th>
-            <th class="p-2 border border-gray-300">ประเภท</th>
-            <th class="p-2 border border-gray-300">วันที่</th>
-          </tr>
-        </thead>
-        <tbody id="expense-list"></tbody>
-      </table>
+      <!-- ส่วนตัวกรอง -->
+      <div class="flex flex-wrap items-center justify-center gap-4 p-4 mt-5 bg-white rounded-lg shadow-md">
+        <div>
+            <label class="block text-gray-700">ประเภท: </label>
+            <select id="filter-category" class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+                <option value="">เลือกทั้งหมด</option>
+                <option value="Food">ค่าอาหาร 🍲</option>
+                <option value="Transport">ค่าเดินทาง ✈️</option>
+                <option value="Entertainment">ความบันเทิง 😜</option>
+                <option value="other">อื่นๆ</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block text-gray-700">วันที่: </label>
+            <input type="date" id="filter-date" class="w-full p-2 bg-gray-200 rounded hover:bg-gray-300">
+        </div>
+
+        <div class="mt-5">
+          <button id="filter-button" class="p-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+              ค้นหา
+          </button>
+
+          <button id="clear-filter" class="p-2 text-white bg-gray-500 rounded hover:bg-gray-600">
+              ล้างตัวกรอง
+          </button>
+        </div>
+      </div>
+
+
+      <!-- ตารางแสดงค่าใช้จ่าย -->
+      <div class="p-6 mx-auto mt-6 bg-white rounded-lg shadow-md max-w-7xl">
+        <div class="flex justify-between">
+        <h3 class="mb-4 text-xl font-bold">รายการค่าใช้จ่าย</h3>
+        <h3 class="mb-4 text-xl font-bold" id="sum">0 บาท</h3>
+        </div>
+        <table class="w-full border border-collapse border-gray-300">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 border border-gray-300">รายการ</th>
+              <th class="p-2 border border-gray-300">จำนวน</th>
+              <th class="p-2 border border-gray-300">ประเภท</th>
+              <th class="p-2 border border-gray-300">วันที่</th>
+              <th class="p-2 border border-gray-300">ดำเนินการ</th>
+            </tr>
+          </thead>
+          <tbody id="expense-list"></tbody>
+        </table>
+      </div>
     </div>
 
     
+    <script src="/components/Expense/script.js"></script>
   </body>
 </html>
